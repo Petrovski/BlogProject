@@ -15,4 +15,11 @@ class Post extends Model
     public $primaryKey = 'id';
     //Timestamps
     public $timestamps = true;
+
+
+    
+    // **** This function is what connects the posts to the specific id. Then in User.php we have the posts() function.
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

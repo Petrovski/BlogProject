@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // **** This funcion connects with the user() function in User.php, saying one user has many posts
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
 }
