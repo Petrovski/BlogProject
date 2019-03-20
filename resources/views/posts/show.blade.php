@@ -3,16 +3,19 @@
 @section('content')
     <a href="/posts" class="btn btn-info">Go Back</a>
     <h1 class="post-heading">{{$post->title}}</h1>
+    <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+    <br><br>
     <div>
         {!!$post->body!!}
     </div>
     <hr>
-    <small>Written on {{$post->created_at}}</small>
+    <small>Written on {{$post->created_at}} by {{$post->user['name']}}</small>
     <hr>
+    @if(!Auth::guest())
     <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary">Edit Post</a>
-
     {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
+    @endif
 @endsection

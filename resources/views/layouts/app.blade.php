@@ -24,6 +24,25 @@
 
     <style>
 
+
+            html {
+                height: 100%;
+                box-sizing: border-box;
+            }
+
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+            }
+
+            body {
+                position: relative;
+                margin: 0;
+                padding-bottom: 6rem;
+                min-height: 100%;
+            }
+
             .card {
                 margin: 30px 0px 30px 0px;
             }
@@ -31,17 +50,17 @@
             .posts-heading {
                 text-align: center;
                 font-size: 50px;
-                margin: 10px 0px 20px 0px;
+                margin: 30px 0px 30px 0px;
             }
 
             hr {
                 border: 0;
-                height: 0.5px;
+                height: 2px;
                 background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
             }
 
             .jumbotron {
-                margin-top: 20px;
+                margin-top: 30px;
             }
 
             .btn-info {
@@ -58,6 +77,40 @@
                 margin: 20px 0px 20px 0px;
                 text-align: center;
             }
+
+            .table td {
+                font-size: 16px;
+                font-weight: bold; 
+            }
+
+            .table th {
+                font-size: 22px;
+                text-decoration: underline;
+            }
+
+            .jumbo-heading {
+                font-size: 60px;
+                margin: 10px 0px 10px 0px;
+            }
+
+            .jumbo-text {
+                font-size: 20px;
+                margin: 20px 0px 20px 0px;
+            }
+
+            #footer {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 1rem;
+                background-color: #efefef;
+                text-align: center;
+            }
+
+            .nav-item:hover {
+                border-bottom: 0.5px solid lightgray;
+            }
             
     </style>
 
@@ -67,6 +120,7 @@
             @include('inc.messages')
             @yield('content')
         </div>
+        <footer id="footer">This application was made and designed by Alexander Petroski</footer>
     </div>
     
 

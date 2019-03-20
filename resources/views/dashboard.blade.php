@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! Welcome to your dashboard, <strong>{{ Auth::user()->name }}</strong>
                 </div>
 
                 <div class="container text-center">
@@ -23,15 +23,20 @@
                     @if(count($posts) > 0)
                         <table class="table table-striped">
                             <tr>
-                                <th>Title</th>
-                                <th></th>
-                                <th></th>
+                                <th>Post Title</th>
+                                <th>Edit Post</th>
+                                <th>Delete Post</th>
                             </tr>
                             @foreach ($posts as $post)
-                                    <tr>
-                                    <th>{{$post->title}}</th>
-                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a></th>
-                                    <th></th>
+                                <tr>
+                                    <td>{{$post->title}}</td>
+                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-secondary">Edit</a></td>
+                                    <td>
+                                        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
+                                            {{Form::hidden('_method', 'DELETE')}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                        {!!Form::close()!!}
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
